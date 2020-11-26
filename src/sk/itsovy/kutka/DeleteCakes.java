@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 import sk.itsovy.kutka.entity.Cake;
 import sk.itsovy.kutka.entity.Oven;
 
-public class GetCakes {
+public class DeleteCakes {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
@@ -21,10 +21,11 @@ public class GetCakes {
 
             session.beginTransaction();
 
-            int id = 1;
-            Oven oven = session.get(Oven.class, id);
+            int id = 2;
+            Cake cake = session.get(Cake.class, id);
 
-            System.out.println("Cakes: " + oven.getCakes());
+            System.out.println("Deleting: " + cake);
+            session.delete(cake);
 
 
             session.getTransaction().commit();
